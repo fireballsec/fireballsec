@@ -5,23 +5,90 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ФАЙЕРБОЛ СЕКЬЮРИТИ</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        /* ===== БАЗА ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             background: #0A0A0A;
             color: #fff;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.5;
+            overflow-x: hidden;
         }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
 
+        /* ===== АНИМАЦИИ ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.92);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .delay-1 {
+            transition-delay: 0.1s;
+        }
+        .delay-2 {
+            transition-delay: 0.2s;
+        }
+        .delay-3 {
+            transition-delay: 0.3s;
+        }
+        .delay-4 {
+            transition-delay: 0.4s;
+        }
+        .delay-5 {
+            transition-delay: 0.5s;
+        }
+
+        /* ===== ШАПКА ===== */
         header {
             padding: 18px 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(8, 8, 10, 0.8);
-            backdrop-filter: blur(20px);
+            background: rgba(8, 8, 10, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.04);
         }
         .header-inner {
@@ -34,6 +101,7 @@
         .logo {
             font-size: 22px;
             font-weight: 700;
+            letter-spacing: -0.5px;
             background: linear-gradient(135deg, #fff 60%, #FF6B35);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -50,7 +118,9 @@
             transition: 0.3s;
             position: relative;
         }
-        nav a:hover { color: #fff; }
+        nav a:hover {
+            color: #fff;
+        }
         nav a::after {
             content: '';
             position: absolute;
@@ -61,12 +131,27 @@
             background: #FF6B35;
             transition: 0.3s;
         }
-        nav a:hover::after { width: 100%; }
-
+        nav a:hover::after {
+            width: 100%;
+        }
         .header-right {
             display: flex;
             align-items: center;
             gap: 20px;
+            flex-wrap: wrap;
+        }
+        .header-right a.phone-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .header-right a.phone-link:hover {
+            color: #FF6B35;
         }
         .btn-primary {
             background: linear-gradient(135deg, #FF6B35, #E85D04);
@@ -86,25 +171,50 @@
             transform: scale(1.04);
             box-shadow: 0 12px 40px rgba(255, 107, 53, 0.4);
         }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.04);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 16px;
-            transition: 0.4s ease;
+        .btn-emergency {
+            background: #E85D04;
+            border: none;
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 0 30px rgba(232, 93, 4, 0.3);
+            animation: pulse-emergency 2s infinite;
         }
-        .glass-card:hover {
-            border-color: rgba(255, 107, 53, 0.4);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 50px rgba(255, 107, 53, 0.08);
+        .btn-emergency:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(232, 93, 4, 0.5);
+        }
+        @keyframes pulse-emergency {
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(232, 93, 4, 0.2);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(232, 93, 4, 0.5);
+            }
         }
 
-        .hero { padding: 80px 0 60px; }
+        /* ===== ГЕРОЙ ===== */
+        .hero {
+            padding: 80px 0 60px;
+            position: relative;
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
         .hero h1 {
             font-size: 52px;
             font-weight: 700;
-            line-height: 1.1;
+            line-height: 1.05;
             letter-spacing: -1px;
         }
         .hero h1 .highlight {
@@ -132,8 +242,10 @@
             color: rgba(255, 255, 255, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.06);
         }
-        .badge strong { color: #fff; }
-
+        .badge strong {
+            color: #fff;
+            font-weight: 600;
+        }
         .hero-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -145,6 +257,11 @@
             padding: 24px 20px;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: 0.4s;
+        }
+        .stat-item:hover {
+            border-color: rgba(255, 107, 53, 0.3);
+            transform: translateY(-4px);
         }
         .stat-item .number {
             font-size: 32px;
@@ -157,13 +274,22 @@
             margin-top: 4px;
         }
 
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+        /* ===== КАРТОЧКИ СТЕКЛО ===== */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            transition: 0.4s ease;
+        }
+        .glass-card:hover {
+            border-color: rgba(255, 107, 53, 0.3);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(255, 107, 53, 0.06);
         }
 
+        /* ===== СЕКЦИИ ===== */
         .section-title {
             font-size: 34px;
             font-weight: 700;
@@ -180,35 +306,120 @@
             font-size: 16px;
             margin-bottom: 40px;
         }
-
-        .services { padding: 60px 0; }
+        .services {
+            padding: 60px 0;
+        }
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
         }
-        .service-card { padding: 28px 24px; }
-        .service-card .icon { font-size: 32px; margin-bottom: 14px; display: block; }
-        .service-card h3 { font-size: 18px; margin-bottom: 6px; }
-        .service-card p { color: rgba(255, 255, 255, 0.5); font-size: 14px; }
+        .service-card {
+            padding: 28px 24px;
+        }
+        .service-card .icon {
+            font-size: 32px;
+            margin-bottom: 14px;
+            display: block;
+        }
+        .service-card h3 {
+            font-size: 18px;
+            margin-bottom: 6px;
+        }
+        .service-card p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+            line-height: 1.5;
+        }
 
-        .steps { padding: 40px 0; }
+        /* ===== ЭТАПЫ ===== */
+        .steps {
+            padding: 40px 0;
+        }
         .steps-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
         }
-        .step { padding: 24px 20px; border-left: 3px solid #FF6B35; }
+        .step {
+            padding: 24px 20px;
+            border-left: 3px solid #FF6B35;
+        }
         .step .num {
             font-size: 28px;
             font-weight: 700;
             color: #FF6B35;
             opacity: 0.6;
         }
-        .step h4 { font-size: 17px; margin: 8px 0 4px; }
-        .step p { color: rgba(255, 255, 255, 0.5); font-size: 14px; }
+        .step h4 {
+            font-size: 17px;
+            margin: 8px 0 4px;
+        }
+        .step p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
 
-        .contact { padding: 60px 0; }
+        /* ===== ОБЪЕКТЫ ===== */
+        .gallery {
+            padding: 40px 0;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .gallery-item {
+            border-radius: 16px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: 0.4s;
+            aspect-ratio: 4 / 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 14px;
+        }
+        .gallery-item:hover {
+            border-color: rgba(255, 107, 53, 0.4);
+            transform: scale(1.02);
+        }
+
+        /* ===== ОТЗЫВЫ ===== */
+        .reviews {
+            padding: 40px 0;
+        }
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .review-card {
+            padding: 24px 22px;
+        }
+        .review-card .stars {
+            color: #F5A623;
+            font-size: 18px;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+        .review-card p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 15px;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+        .review-card .author {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 13px;
+        }
+
+        /* ===== КОНТАКТЫ ===== */
+        .contact {
+            padding: 60px 0;
+        }
         .contact-wrap {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -218,15 +429,19 @@
             padding: 40px;
             border: 1px solid rgba(255, 255, 255, 0.04);
         }
-        .contact-info p { margin: 10px 0; }
+        .contact-info p {
+            margin: 10px 0;
+        }
         .contact-info .label {
             color: rgba(255, 255, 255, 0.3);
             font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-        .contact-info .value { font-size: 18px; font-weight: 500; }
-
+        .contact-info .value {
+            font-size: 18px;
+            font-weight: 500;
+        }
         .contact-form input,
         .contact-form textarea {
             width: 100%;
@@ -265,6 +480,7 @@
             transform: scale(1.02);
         }
 
+        /* ===== ФУТЕР ===== */
         footer {
             border-top: 1px solid rgba(255, 255, 255, 0.04);
             padding: 32px 0;
@@ -276,153 +492,278 @@
             color: rgba(255, 255, 255, 0.3);
             text-decoration: none;
             margin: 0 12px;
+            transition: 0.3s;
         }
-        footer a:hover { color: #FF6B35; }
+        footer a:hover {
+            color: #FF6B35;
+        }
+        .footer-links {
+            margin-top: 8px;
+        }
 
+        /* ===== АДАПТИВ ===== */
         @media (max-width: 1024px) {
-            .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-            .hero h1 { font-size: 40px; }
-            .grid-3 { grid-template-columns: repeat(2, 1fr); }
-            .steps-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .hero h1 {
+                font-size: 40px;
+            }
+            .grid-3,
+            .gallery-grid,
+            .reviews-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
         @media (max-width: 768px) {
-            .header-inner { flex-direction: column; align-items: stretch; text-align: center; gap: 12px; }
-            nav { justify-content: center; flex-wrap: wrap; gap: 16px; }
-            .header-right { justify-content: center; flex-wrap: wrap; }
-            .hero h1 { font-size: 30px; }
-            .hero-stats { grid-template-columns: repeat(3, 1fr); gap: 12px; }
-            .stat-item .number { font-size: 24px; }
-            .grid-3 { grid-template-columns: 1fr; }
-            .steps-grid { grid-template-columns: 1fr; }
-            .contact-wrap { grid-template-columns: 1fr; padding: 24px; }
-            .section-title { font-size: 26px; }
+            .header-inner {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+                gap: 12px;
+            }
+            nav {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 16px;
+            }
+            .header-right {
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 30px;
+            }
+            .hero-stats {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
+            }
+            .stat-item .number {
+                font-size: 24px;
+            }
+            .grid-3,
+            .gallery-grid,
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-wrap {
+                grid-template-columns: 1fr;
+                padding: 24px;
+            }
+            .section-title {
+                font-size: 26px;
+            }
         }
         @media (max-width: 480px) {
-            .hero h1 { font-size: 26px; }
-            .hero-stats { grid-template-columns: 1fr 1fr; }
-            .stat-item { padding: 16px 12px; }
+            .hero h1 {
+                font-size: 26px;
+            }
+            .hero-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+            .stat-item {
+                padding: 16px 12px;
+            }
+            .btn-emergency {
+                font-size: 13px;
+                padding: 10px 18px;
+            }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="container header-inner">
-        <div class="logo">ФАЙЕРБОЛ СЕКЬЮРИТИ</div>
-        <nav>
-            <a href="#services">Услуги</a>
-            <a href="#steps">Как работаем</a>
-            <a href="#contact">Контакты</a>
-        </nav>
-        <div class="header-right">
-            <a href="tel:+89131004718" style="display:flex; align-items:center; gap:8px; color:#fff; text-decoration:none; font-weight:600; font-size:16px;" title="Позвонить нам">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-                </svg>
-                <span>8 (913) 100-47-18</span>
-            </a>
-            <a href="#contact" class="btn-primary">Заявка</a>
+    <header>
+        <div class="container header-inner">
+            <div class="logo">ФАЙЕРБОЛ СЕКЬЮРИТИ</div>
+            <nav>
+                <a href="#services">Услуги</a>
+                <a href="#objects">Объекты</a>
+                <a href="#reviews">Отзывы</a>
+                <a href="#contact">Контакты</a>
+            </nav>
+            <div class="header-right">
+                <a href="tel:+89131004718" class="phone-link" title="Позвонить нам">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FF6B35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    <span>8 (913) 100-47-18</span>
+                </a>
+                <a href="#contact" class="btn-primary">Заявка</a>
+                <a href="tel:+89131004718" class="btn-emergency">Экстренный вызов</a>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
 
-<section class="hero">
-    <div class="container">
-        <div class="hero-grid">
-            <div>
-                <h1>Электроснабжение и безопасность — <span class="highlight">без компромиссов</span></h1>
-                <p>Проектируем, монтируем, обслуживаем. Лицензия МЧС. Собственные бригады. Томск с 2024.</p>
-                <a href="#contact" class="btn-primary" style="padding:12px 32px; font-size:16px;">Получить коммерческое предложение</a>
-                <div class="hero-badges">
-                    <span class="badge"><strong>Лицензия</strong> МЧС</span>
-                    <span class="badge"><strong>Свои</strong> бригады</span>
-                    <span class="badge"><strong>Выезд</strong> в день заявки</span>
+    <!-- ===== ГЕРОЙ ===== -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="fade-in">
+                    <h1>Электроснабжение и безопасность — <span class="highlight">без компромиссов</span></h1>
+                    <p>Проектируем, монтируем, обслуживаем. Лицензия МЧС. Собственные бригады. Томск с 2024.</p>
+                    <a href="#contact" class="btn-primary" style="padding:12px 32px; font-size:16px;">Получить коммерческое предложение</a>
+                    <div class="hero-badges">
+                        <span class="badge"><strong>Лицензия</strong> МЧС</span>
+                        <span class="badge"><strong>Свои</strong> бригады</span>
+                        <span class="badge"><strong>Выезд</strong> в день заявки</span>
+                    </div>
+                </div>
+                <div class="hero-stats fade-in delay-2">
+                    <div class="stat-item"><div class="number">2+</div><div class="label">года на рынке</div></div>
+                    <div class="stat-item"><div class="number">50+</div><div class="label">объектов</div></div>
+                    <div class="stat-item"><div class="number">100%</div><div class="label">гарантия качества</div></div>
                 </div>
             </div>
-            <div class="hero-stats">
-                <div class="stat-item"><div class="number">2+</div><div class="label">года на рынке</div></div>
-                <div class="stat-item"><div class="number">50+</div><div class="label">объектов</div></div>
-                <div class="stat-item"><div class="number">100%</div><div class="label">гарантия качества</div></div>
+        </div>
+    </section>
+
+    <!-- ===== УСЛУГИ ===== -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="fade-in">
+                <h2 class="section-title">Наши <span class="highlight">услуги</span></h2>
+                <div class="section-sub">Комплексные решения для бизнеса</div>
+            </div>
+            <div class="grid-3">
+                <div class="service-card glass-card fade-in delay-1"><span class="icon">⚡</span><h3>Электроснабжение</h3><p>Проектирование и монтаж под ключ. От щита до розетки.</p></div>
+                <div class="service-card glass-card fade-in delay-2"><span class="icon">🔥</span><h3>Пожарная сигнализация</h3><p>Монтаж, настройка, обслуживание систем пожарной безопасности. Лицензия МЧС.</p></div>
+                <div class="service-card glass-card fade-in delay-3"><span class="icon">📹</span><h3>Видеонаблюдение</h3><p>IP-камеры, архив до 90 дней, удаленный доступ.</p></div>
+                <div class="service-card glass-card fade-in delay-2"><span class="icon">🔌</span><h3>Кабельные линии</h3><p>Открыто, скрыто, в коробах, под землей.</p></div>
+                <div class="service-card glass-card fade-in delay-3"><span class="icon">🚪</span><h3>СКУД</h3><p>Контроль доступа по картам, ключам, биометрии.</p></div>
+                <div class="service-card glass-card fade-in delay-4"><span class="icon">💡</span><h3>Свет и розетки</h3><p>Установка любой сложности, в том числе дизайнерских.</p></div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="services" id="services">
-    <div class="container">
-        <h2 class="section-title">Наши <span class="highlight">услуги</span></h2>
-        <div class="section-sub">Комплексные решения для бизнеса</div>
-        <div class="grid-3">
-            <div class="service-card glass-card"><span class="icon">⚡</span><h3>Электроснабжение</h3><p>Проектирование и монтаж под ключ. От щита до розетки.</p></div>
-            <div class="service-card glass-card"><span class="icon">🔥</span><h3>Пожарная сигнализация</h3><p>Монтаж, настройка, обслуживание систем пожарной безопасности. Лицензия МЧС.</p></div>
-            <div class="service-card glass-card"><span class="icon">📹</span><h3>Видеонаблюдение</h3><p>IP-камеры, архив до 90 дней, удаленный доступ.</p></div>
-            <div class="service-card glass-card"><span class="icon">🔌</span><h3>Кабельные линии</h3><p>Открыто, скрыто, в коробах, под землей.</p></div>
-            <div class="service-card glass-card"><span class="icon">🚪</span><h3>СКУД</h3><p>Контроль доступа по картам, ключам, биометрии.</p></div>
-            <div class="service-card glass-card"><span class="icon">💡</span><h3>Свет и розетки</h3><p>Установка любой сложности, в том числе дизайнерских.</p></div>
-            <div class="service-card glass-card"><span class="icon">🛠️</span><h3>Обслуживание</h3><p>Проверки, ремонт, аварийный выезд.</p></div>
-        </div>
-    </div>
-</section>
-
-<section class="steps" id="steps">
-    <div class="container">
-        <h2 class="section-title">Как мы <span class="highlight">работаем</span></h2>
-        <div class="section-sub">Четыре шага до готового объекта</div>
-        <div class="steps-grid">
-            <div class="step glass-card"><div class="num">01</div><h4>Заявка</h4><p>Оставляете заявку на сайте или по телефону.</p></div>
-            <div class="step glass-card"><div class="num">02</div><h4>Выезд</h4><p>Замер, осмотр, обсуждаем задачи.</p></div>
-            <div class="step glass-card"><div class="num">03</div><h4>КП</h4><p>Смета и договор в течение дня.</p></div>
-            <div class="step glass-card"><div class="num">04</div><h4>Монтаж</h4><p>Работаем по графику, сдаем под ключ.</p></div>
-        </div>
-    </div>
-</section>
-
-<section class="contact" id="contact">
-    <div class="container">
-        <h2 class="section-title">Свяжитесь с <span class="highlight">нами</span></h2>
-        <div class="section-sub">Приезжайте или звоните — мы всегда на связи</div>
-        <div class="contact-wrap">
-            <div class="contact-info">
-                <p><span class="label">Телефон</span><br><span class="value">8 (913) 100-47-18</span></p>
-                <p><span class="label">Адрес</span><br><span class="value">г. Томск, ул. Савиных, 3, помещение 15, 2-й этаж</span></p>
-                <p><span class="label">График работы</span><br><span class="value">Пн–Пт, 09:00–18:00</span></p>
-                <p style="margin-top:24px; color:rgba(255,255,255,0.3); font-size:14px;">Работаем с юридическими и физическими лицами</p>
+    <!-- ===== ОБЪЕКТЫ (ГАЛЕРЕЯ) ===== -->
+    <section class="gallery" id="objects">
+        <div class="container">
+            <div class="fade-in">
+                <h2 class="section-title">Наши <span class="highlight">объекты</span></h2>
+                <div class="section-sub">Реальные проекты, которые мы реализовали</div>
             </div>
-            <div class="contact-form">
-                <form action="https://formsubmit.co/fayerbol.sekyuriti@mail.ru" method="POST">
-                    <input type="text" name="Имя" placeholder="Ваше имя" required>
-                    <input type="tel" name="Телефон" placeholder="Телефон" required>
-                    <textarea name="Сообщение" rows="3" placeholder="Сообщение"></textarea>
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_next" value="https://fireballsec.github.io/fireballsec/thanks.html">
-
-                    <!-- ЧЕК-БОКС СОГЛАСИЯ -->
-                    <div style="margin: 15px 0;">
-                        <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: rgba(255,255,255,0.7); cursor: pointer; line-height: 1.4;">
-                            <input type="checkbox" name="agree" required style="width: 18px; height: 18px; margin-top: 2px; cursor: pointer; accent-color: #FF6B35; flex-shrink: 0;">
-                            <span>
-                                Я принимаю условия <a href="privacy.html" target="_blank" style="color: #FF6B35; text-decoration: none; border-bottom: 1px dashed #FF6B35;">Политики конфиденциальности</a>
-                                и даю согласие на обработку моих персональных данных
-                            </span>
-                        </label>
-                    </div>
-
-                    <button type="submit">Отправить заявку</button>
-                </form>
+            <div class="gallery-grid">
+                <div class="gallery-item scale-in delay-1">Объект 1</div>
+                <div class="gallery-item scale-in delay-2">Объект 2</div>
+                <div class="gallery-item scale-in delay-3">Объект 3</div>
+                <div class="gallery-item scale-in delay-2">Объект 4</div>
+                <div class="gallery-item scale-in delay-3">Объект 5</div>
+                <div class="gallery-item scale-in delay-4">Объект 6</div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<footer>
-    <div class="container">
-        <p>© 2026 ФАЙЕРБОЛ СЕКЬЮРИТИ</p>
-        <div class="footer-links">
-            <a href="privacy.html">Политика конфиденциальности</a>
-            <a href="#">Согласие на обработку данных</a>
+    <!-- ===== ОТЗЫВЫ ===== -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <div class="fade-in">
+                <h2 class="section-title">Что говорят <span class="highlight">клиенты</span></h2>
+                <div class="section-sub">Реальные отзывы о нашей работе</div>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card glass-card fade-in delay-1">
+                    <div class="stars">★★★★★</div>
+                    <p>«Всё сделали быстро и качественно. Отдельное спасибо за консультацию по пожарной сигнализации — теперь спим спокойно.»</p>
+                    <div class="author">— Алексей, Томск</div>
+                </div>
+                <div class="review-card glass-card fade-in delay-2">
+                    <div class="stars">★★★★★</div>
+                    <p>«Доволен как слон! Сделали электрику в новом доме, всё по уму, с документами и лицензией. Рекомендую.»</p>
+                    <div class="author">— Сергей, Северск</div>
+                </div>
+                <div class="review-card glass-card fade-in delay-3">
+                    <div class="stars">★★★★★</div>
+                    <p>«Приехали в день заявки, оценили объём работ, быстро согласовали смету. Профессионалы с большой буквы.»</p>
+                    <div class="author">— Ольга, Томск</div>
+                </div>
+            </div>
         </div>
-    </div>
-</footer>
+    </section>
+
+    <!-- ===== КОНТАКТЫ ===== -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="fade-in">
+                <h2 class="section-title">Свяжитесь с <span class="highlight">нами</span></h2>
+                <div class="section-sub">Приезжайте или звоните — мы всегда на связи</div>
+            </div>
+            <div class="contact-wrap fade-in">
+                <div class="contact-info">
+                    <p><span class="label">Телефон</span><br><span class="value">8 (913) 100-47-18</span></p>
+                    <p><span class="label">Адрес</span><br><span class="value">г. Томск, ул. Савиных, 3, помещение 15, 2-й этаж</span></p>
+                    <p><span class="label">График работы</span><br><span class="value">Пн–Пт, 09:00–18:00</span></p>
+                    <p style="margin-top:24px; color:rgba(255,255,255,0.3); font-size:14px;">Работаем с юридическими и физическими лицами</p>
+                </div>
+                <div class="contact-form">
+                    <form action="https://formsubmit.co/fayerbol.sekyuriti@mail.ru" method="POST">
+                        <input type="text" name="Имя" placeholder="Ваше имя" required>
+                        <input type="tel" name="Телефон" placeholder="Телефон" required>
+                        <textarea name="Сообщение" rows="3" placeholder="Сообщение"></textarea>
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="https://fireballsec.github.io/fireballsec/thanks.html">
+                        <div style="margin: 15px 0;">
+                            <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: rgba(255,255,255,0.7); cursor: pointer; line-height: 1.4;">
+                                <input type="checkbox" name="agree" required style="width: 18px; height: 18px; margin-top: 2px; cursor: pointer; accent-color: #FF6B35; flex-shrink: 0;">
+                                <span>
+                                    Я принимаю условия <a href="privacy.html" target="_blank" style="color: #FF6B35; text-decoration: none; border-bottom: 1px dashed #FF6B35;">Политики конфиденциальности</a>
+                                    и даю согласие на обработку моих персональных данных
+                                </span>
+                            </label>
+                        </div>
+                        <button type="submit">Отправить заявку</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ФУТЕР ===== -->
+    <footer>
+        <div class="container">
+            <p>© 2026 ФАЙЕРБОЛ СЕКЬЮРИТИ</p>
+            <div class="footer-links">
+                <a href="privacy.html">Политика конфиденциальности</a>
+                <a href="#">Согласие на обработку данных</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== АНИМАЦИЯ ПРИ СКРОЛЛЕ ===== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -30px 0px'
+            });
+
+            elements.forEach(el => observer.observe(el));
+
+            // Если элемент уже виден при загрузке — сразу показываем
+            setTimeout(() => {
+                elements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight) {
+                        el.classList.add('visible');
+                    }
+                });
+            }, 200);
+        });
+    </script>
 
 </body>
 </html>
