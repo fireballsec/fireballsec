@@ -13,21 +13,29 @@
         body {
             background: #0A0A0A;
             color: #fff;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            padding: 40px 20px;
+            padding: 20px 16px;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
         }
         .container {
-            max-width: 800px;
-            margin: 0 auto;
+            max-width: 720px;
+            width: 100%;
             background: rgba(255,255,255,0.03);
             border-radius: 20px;
-            padding: 40px;
+            padding: 30px 24px;
             border: 1px solid rgba(255,255,255,0.06);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
         h1 {
-            font-size: 32px;
-            margin-bottom: 8px;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            line-height: 1.2;
         }
         h1 span {
             color: #FF6B35;
@@ -35,25 +43,40 @@
         .date {
             color: rgba(255,255,255,0.4);
             font-size: 14px;
-            margin-bottom: 30px;
+            margin-bottom: 28px;
         }
         h2 {
             font-size: 20px;
-            margin-top: 30px;
-            margin-bottom: 12px;
+            font-weight: 600;
+            margin-top: 28px;
+            margin-bottom: 10px;
             color: #FF6B35;
+            line-height: 1.3;
         }
         p {
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.75);
             margin-bottom: 12px;
+            font-size: 15px;
+            line-height: 1.6;
+            word-break: break-word;
         }
         ul {
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.75);
             padding-left: 20px;
             margin-bottom: 16px;
+            font-size: 15px;
         }
         ul li {
             margin-bottom: 6px;
+            word-break: break-word;
+        }
+        a {
+            color: #FF6B35;
+            text-decoration: none;
+            word-break: break-all;
+        }
+        a:hover {
+            text-decoration: underline;
         }
         .back-link {
             display: inline-block;
@@ -64,17 +87,46 @@
             padding: 10px 24px;
             border-radius: 30px;
             transition: 0.3s;
+            font-size: 14px;
         }
         .back-link:hover {
             background: #FF6B35;
             color: #0A0A0A;
+            text-decoration: none;
         }
         strong {
             color: #fff;
         }
+        .contact-block {
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            padding: 16px 18px;
+            margin: 10px 0 6px;
+            border-left: 3px solid #FF6B35;
+        }
+        .contact-block p {
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px 16px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            h2 {
+                font-size: 18px;
+            }
+            p, ul {
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
+
 <div class="container">
     <h1>Политика <span>конфиденциальности</span></h1>
     <div class="date">Дата публикации: 08.09.2026</div>
@@ -83,11 +135,13 @@
     <p>Настоящая Политика конфиденциальности определяет порядок обработки и защиты персональных данных пользователей сайта <strong>https://fireballsec.github.io/fireballsec/</strong> (далее — Сайт).</p>
 
     <h2>2. Кто обрабатывает данные</h2>
-    <p><strong>Оператор:</strong> ООО «ФАЙЕРБОЛ СЕКЬЮРИТИ»<br>
-    <strong>ИНН:</strong> 7000012961<br>
-    <strong>ОГРН:</strong> 1247000000125<br>
-    <strong>Адрес:</strong> г. Томск, ул. Савиных, д. 3, помещение 15, 2-й этаж<br>
-    <strong>Электронная почта для запросов:</strong> fayerbol.sekyuriti@mail.ru</p>
+    <div class="contact-block">
+        <p><strong>Оператор:</strong> ООО «ФАЙЕРБОЛ СЕКЬЮРИТИ»</p>
+        <p><strong>ИНН:</strong> 7000012961</p>
+        <p><strong>ОГРН:</strong> 1247000000125</p>
+        <p><strong>Адрес:</strong> г. Томск, ул. Савиных, д. 3, помещение 15, 2-й этаж</p>
+        <p><strong>Email для запросов:</strong> <a href="mailto:fayerbol.sekyuriti@mail.ru">fayerbol.sekyuriti@mail.ru</a></p>
+    </div>
 
     <h2>3. Какие данные собираются</h2>
     <ul>
@@ -121,13 +175,14 @@
 
     <h2>9. Контактная информация</h2>
     <p>По всем вопросам, связанным с обработкой персональных данных, вы можете связаться с нами:</p>
-    <ul>
-        <li>Телефон: <strong>8 (913) 100-47-18</strong></li>
-        <li>Email: <strong>fayerbol.sekyuriti@mail.ru</strong></li>
-        <li>Почтовый адрес: <strong>г. Томск, ул. Савиных, д. 3, помещение 15, 2-й этаж</strong></li>
-    </ul>
+    <div class="contact-block">
+        <p><strong>Телефон:</strong> 8 (913) 100-47-18</p>
+        <p><strong>Email:</strong> <a href="mailto:fayerbol.sekyuriti@mail.ru">fayerbol.sekyuriti@mail.ru</a></p>
+        <p><strong>Адрес:</strong> г. Томск, ул. Савиных, д. 3, помещение 15, 2-й этаж</p>
+    </div>
 
     <a href="index.html" class="back-link">← Вернуться на сайт</a>
 </div>
+
 </body>
 </html>
