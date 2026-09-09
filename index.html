@@ -6,14 +6,8 @@
     <title>ФАЙЕРБОЛ СЕКЬЮРИТИ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             background: #0A0A0A;
             color: #fff;
@@ -21,11 +15,7 @@
             line-height: 1.4;
             overflow-x: hidden;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
         /* ===== АНИМАЦИИ ===== */
         .fade-in {
@@ -33,31 +23,17 @@
             transform: translateY(40px);
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
         .scale-in {
             opacity: 0;
             transform: scale(0.92);
             transition: opacity 0.7s ease, transform 0.7s ease;
         }
-        .scale-in.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-        .delay-1 {
-            transition-delay: 0.1s;
-        }
-        .delay-2 {
-            transition-delay: 0.2s;
-        }
-        .delay-3 {
-            transition-delay: 0.3s;
-        }
-        .delay-4 {
-            transition-delay: 0.4s;
-        }
+        .scale-in.visible { opacity: 1; transform: scale(1); }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
 
         /* ===== ШАПКА ===== */
         header {
@@ -95,9 +71,7 @@
             transition: 0.3s;
             position: relative;
         }
-        nav a:hover {
-            color: #fff;
-        }
+        nav a:hover { color: #fff; }
         nav a::after {
             content: '';
             position: absolute;
@@ -108,9 +82,7 @@
             background: #FF6B35;
             transition: 0.3s;
         }
-        nav a:hover::after {
-            width: 100%;
-        }
+        nav a:hover::after { width: 100%; }
 
         .header-right {
             display: flex;
@@ -128,12 +100,8 @@
             font-size: 16px;
             transition: 0.3s;
         }
-        .header-right a.phone-link:hover {
-            color: #FF6B35;
-        }
-        .header-right a.phone-link i {
-            font-size: 18px;
-        }
+        .header-right a.phone-link:hover { color: #FF6B35; }
+        .header-right a.phone-link i { font-size: 18px; }
 
         .btn-primary {
             background: linear-gradient(135deg, #FF6B35, #E85D04);
@@ -174,19 +142,12 @@
             box-shadow: 0 0 50px rgba(232, 93, 4, 0.5);
         }
         @keyframes pulse-emergency {
-            0%,
-            100% {
-                box-shadow: 0 0 20px rgba(232, 93, 4, 0.2);
-            }
-            50% {
-                box-shadow: 0 0 40px rgba(232, 93, 4, 0.5);
-            }
+            0%, 100% { box-shadow: 0 0 20px rgba(232, 93, 4, 0.2); }
+            50% { box-shadow: 0 0 40px rgba(232, 93, 4, 0.5); }
         }
 
         /* ===== ГЕРОЙ ===== */
-        .hero {
-            padding: 60px 0 40px;
-        }
+        .hero { padding: 60px 0 40px; }
         .hero-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -224,10 +185,7 @@
             color: rgba(255, 255, 255, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.06);
         }
-        .badge strong {
-            color: #fff;
-            font-weight: 600;
-        }
+        .badge strong { color: #fff; font-weight: 600; }
 
         .hero-stats {
             display: grid;
@@ -290,27 +248,20 @@
         }
 
         /* ===== УСЛУГИ ===== */
-        .services {
-            padding: 50px 0;
-        }
+        .services { padding: 50px 0; }
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
         }
-        .service-card {
-            padding: 24px 20px;
-        }
+        .service-card { padding: 24px 20px; }
         .service-card .icon {
             font-size: 40px;
             color: #FF6B35;
             margin-bottom: 12px;
             display: block;
         }
-        .service-card h3 {
-            font-size: 18px;
-            margin-bottom: 4px;
-        }
+        .service-card h3 { font-size: 18px; margin-bottom: 4px; }
         .service-card p {
             color: rgba(255, 255, 255, 0.5);
             font-size: 14px;
@@ -318,9 +269,7 @@
         }
 
         /* ===== ПРЕИМУЩЕСТВА ===== */
-        .advantages {
-            padding: 30px 0;
-        }
+        .advantages { padding: 30px 0; }
         .grid-4 {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -329,6 +278,8 @@
         .adv-item {
             text-align: center;
             padding: 24px 16px;
+            position: relative;
+            cursor: help;
         }
         .adv-item .icon {
             font-size: 36px;
@@ -336,19 +287,52 @@
             margin-bottom: 10px;
             display: block;
         }
-        .adv-item h4 {
-            font-size: 17px;
-            margin-bottom: 4px;
-        }
+        .adv-item h4 { font-size: 17px; margin-bottom: 4px; }
         .adv-item p {
             color: rgba(255, 255, 255, 0.5);
             font-size: 14px;
         }
 
-        /* ===== ЭТАПЫ ===== */
-        .steps {
-            padding: 30px 0;
+        /* ===== ВСПЛЫВАЮЩАЯ ПОДСКАЗКА ===== */
+        .adv-item[data-tooltip]:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 110%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1A1A1A;
+            color: #fff;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 107, 53, 0.25);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            font-size: 13px;
+            line-height: 1.4;
+            width: 280px;
+            max-width: 90vw;
+            text-align: left;
+            z-index: 999;
+            pointer-events: none;
+            white-space: normal;
+            font-weight: 400;
+            backdrop-filter: blur(8px);
+            background: rgba(10, 10, 10, 0.95);
         }
+
+        .adv-item[data-tooltip]:hover::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 6px solid transparent;
+            border-top-color: #1A1A1A;
+            z-index: 999;
+            pointer-events: none;
+        }
+
+        /* ===== ЭТАПЫ ===== */
+        .steps { padding: 30px 0; }
         .steps-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -364,19 +348,14 @@
             color: #FF6B35;
             opacity: 0.6;
         }
-        .step h4 {
-            font-size: 17px;
-            margin: 6px 0 4px;
-        }
+        .step h4 { font-size: 17px; margin: 6px 0 4px; }
         .step p {
             color: rgba(255, 255, 255, 0.5);
             font-size: 14px;
         }
 
         /* ===== ОБЪЕКТЫ ===== */
-        .gallery {
-            padding: 30px 0;
-        }
+        .gallery { padding: 30px 0; }
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -401,9 +380,7 @@
             border-color: rgba(255, 107, 53, 0.4);
             transform: scale(1.02);
         }
-        .gallery-item i {
-            font-size: 32px;
-        }
+        .gallery-item i { font-size: 32px; }
 
         /* ===== КАРТА ===== */
         .map-container {
@@ -413,9 +390,7 @@
         }
 
         /* ===== КОНТАКТЫ ===== */
-        .contact {
-            padding: 50px 0;
-        }
+        .contact { padding: 50px 0; }
         .contact-wrap {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -425,19 +400,14 @@
             padding: 30px;
             border: 1px solid rgba(255, 255, 255, 0.04);
         }
-        .contact-info p {
-            margin: 8px 0;
-        }
+        .contact-info p { margin: 8px 0; }
         .contact-info .label {
             color: rgba(255, 255, 255, 0.3);
             font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
-        .contact-info .value {
-            font-size: 18px;
-            font-weight: 500;
-        }
+        .contact-info .value { font-size: 18px; font-weight: 500; }
 
         .contact-form input,
         .contact-form textarea {
@@ -473,9 +443,7 @@
             cursor: pointer;
             transition: 0.3s;
         }
-        .contact-form button:hover {
-            transform: scale(1.02);
-        }
+        .contact-form button:hover { transform: scale(1.02); }
 
         /* ===== ФУТЕР ===== */
         footer {
@@ -491,210 +459,87 @@
             margin: 0 10px;
             transition: 0.3s;
         }
-        footer a:hover {
-            color: #FF6B35;
-        }
-        .footer-links {
-            margin-top: 6px;
-        }
+        footer a:hover { color: #FF6B35; }
+        .footer-links { margin-top: 6px; }
 
         /* ===== МОБИЛЬНАЯ ВЕРСИЯ ===== */
         @media (max-width: 768px) {
-            .header-inner {
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 4px;
-            }
-            .logo-img {
-                height: 80px !important;
-                margin-bottom: 0;
-            }
-            nav {
-                justify-content: center;
-                gap: 14px;
-                font-size: 15px;
-                font-weight: 500;
-                flex-wrap: wrap;
-            }
-            .header-right {
-                justify-content: center;
-                gap: 6px;
-                flex-wrap: wrap;
-                margin-top: 2px;
-            }
-            .header-right a.phone-link span {
-                font-size: 13px;
-            }
-            .header-right a.phone-link i {
-                font-size: 14px;
-            }
-            .btn-primary {
-                padding: 6px 12px;
+            .header-inner { flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+            .logo-img { height: 80px !important; margin-bottom: 0; }
+            nav { justify-content: center; gap: 14px; font-size: 15px; font-weight: 500; flex-wrap: wrap; }
+            .header-right { justify-content: center; gap: 6px; flex-wrap: wrap; margin-top: 2px; }
+            .header-right a.phone-link span { font-size: 13px; }
+            .header-right a.phone-link i { font-size: 14px; }
+            .btn-primary { padding: 6px 12px; font-size: 12px; }
+            .btn-emergency { padding: 6px 12px; font-size: 12px; animation: none; }
+
+            .hero { padding: 30px 0 20px; }
+            .hero-grid { grid-template-columns: 1fr; gap: 20px; }
+            .hero h1 { font-size: 28px; text-align: center; }
+            .hero p { font-size: 15px; text-align: center; margin: 12px auto 18px; }
+            .hero-badges { justify-content: center; }
+            .hero-stats { grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+            .stat-item { padding: 12px 8px; }
+            .stat-item .number { font-size: 22px; }
+            .stat-item .label { font-size: 11px; }
+
+            .grid-3, .gallery-grid { grid-template-columns: 1fr; }
+            .grid-4 { grid-template-columns: 1fr 1fr; }
+            .steps-grid { grid-template-columns: 1fr; }
+            .contact-wrap { grid-template-columns: 1fr; padding: 20px; }
+            .section-title { font-size: 26px; text-align: center; }
+            .section-sub { font-size: 14px; text-align: center; margin-bottom: 20px; }
+            .map-container iframe { height: 200px; }
+
+            .services { padding: 30px 0; }
+            .service-card { padding: 18px 16px; }
+            .service-card .icon { font-size: 32px; }
+            .service-card h3 { font-size: 16px; }
+            .service-card p { font-size: 13px; }
+
+            .advantages { padding: 20px 0; }
+            .adv-item { padding: 16px; }
+            .adv-item .icon { font-size: 28px; }
+            .adv-item h4 { font-size: 15px; }
+            .adv-item p { font-size: 13px; }
+
+            .adv-item[data-tooltip]:hover::after {
+                width: 220px;
                 font-size: 12px;
-            }
-            .btn-emergency {
-                padding: 6px 12px;
-                font-size: 12px;
-                animation: none;
+                padding: 10px 14px;
+                bottom: 105%;
             }
 
-            .hero {
-                padding: 30px 0 20px;
-            }
-            .hero-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            .hero h1 {
-                font-size: 28px;
-                text-align: center;
-            }
-            .hero p {
-                font-size: 15px;
-                text-align: center;
-                margin: 12px auto 18px;
-            }
-            .hero-badges {
-                justify-content: center;
-            }
-            .hero-stats {
-                grid-template-columns: 1fr 1fr 1fr;
-                gap: 8px;
-            }
-            .stat-item {
-                padding: 12px 8px;
-            }
-            .stat-item .number {
-                font-size: 22px;
-            }
-            .stat-item .label {
-                font-size: 11px;
-            }
-
-            .grid-3,
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-            .grid-4 {
-                grid-template-columns: 1fr 1fr;
-            }
-            .steps-grid {
-                grid-template-columns: 1fr;
-            }
-            .contact-wrap {
-                grid-template-columns: 1fr;
-                padding: 20px;
-            }
-            .section-title {
-                font-size: 26px;
-                text-align: center;
-            }
-            .section-sub {
-                font-size: 14px;
-                text-align: center;
-                margin-bottom: 20px;
-            }
-            .map-container iframe {
-                height: 200px;
-            }
-
-            .services {
-                padding: 30px 0;
-            }
-            .service-card {
-                padding: 18px 16px;
-            }
-            .service-card .icon {
-                font-size: 32px;
-            }
-            .service-card h3 {
-                font-size: 16px;
-            }
-            .service-card p {
-                font-size: 13px;
-            }
-
-            .advantages {
-                padding: 20px 0;
-            }
-            .adv-item {
-                padding: 16px;
-            }
-            .adv-item .icon {
-                font-size: 28px;
-            }
-            .adv-item h4 {
-                font-size: 15px;
-            }
-            .adv-item p {
-                font-size: 13px;
-            }
-
-            .contact-form label {
-                flex-wrap: wrap;
-                gap: 4px;
-            }
-            .contact-form label span {
-                flex: 1 1 100%;
-                font-size: 12px;
-            }
-            .footer-links {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 4px;
-            }
-            .footer-links a {
-                margin: 0;
-            }
+            .contact-form label { flex-wrap: wrap; gap: 4px; }
+            .contact-form label span { flex: 1 1 100%; font-size: 12px; }
+            .footer-links { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+            .footer-links a { margin: 0; }
         }
 
         @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 24px;
-            }
-            .hero-stats {
-                grid-template-columns: 1fr 1fr;
-            }
-            .stat-item {
-                padding: 10px 8px;
-            }
-            .stat-item .number {
-                font-size: 20px;
-            }
-            .btn-emergency {
+            .hero h1 { font-size: 24px; }
+            .hero-stats { grid-template-columns: 1fr 1fr; }
+            .stat-item { padding: 10px 8px; }
+            .stat-item .number { font-size: 20px; }
+            .btn-emergency { font-size: 11px; padding: 4px 10px; }
+            .grid-4 { grid-template-columns: 1fr; }
+            .logo-img { height: 70px !important; }
+            nav { font-size: 13px; gap: 10px; }
+            .header-right a.phone-link span { font-size: 12px; }
+            .header-right a.phone-link i { font-size: 13px; }
+            .btn-primary { font-size: 11px; padding: 4px 10px; }
+            .section-title { font-size: 22px; }
+            .adv-item[data-tooltip]:hover::after {
+                width: 200px;
                 font-size: 11px;
-                padding: 4px 10px;
-            }
-            .grid-4 {
-                grid-template-columns: 1fr;
-            }
-            .logo-img {
-                height: 70px !important;
-            }
-            nav {
-                font-size: 13px;
-                gap: 10px;
-            }
-            .header-right a.phone-link span {
-                font-size: 12px;
-            }
-            .header-right a.phone-link i {
-                font-size: 13px;
-            }
-            .btn-primary {
-                font-size: 11px;
-                padding: 4px 10px;
-            }
-            .section-title {
-                font-size: 22px;
+                padding: 8px 12px;
             }
         }
     </style>
 </head>
 <body>
 
+    <!-- ===== ШАПКА ===== -->
     <header>
         <div class="container header-inner">
             <a href="#services" style="display: block; line-height: 0;">
@@ -716,6 +561,7 @@
         </div>
     </header>
 
+    <!-- ===== ГЕРОЙ ===== -->
     <section class="hero">
         <div class="container">
             <div class="hero-grid">
@@ -730,7 +576,7 @@
                     </div>
                 </div>
                 <div class="hero-stats fade-in delay-2">
-                    <div class="stat-item"><div class="number">50+</div><div class="label">объектов</div></div>
+                    <div class="stat-item"><div class="number">100+</div><div class="label">объектов</div></div>
                     <div class="stat-item"><div class="number">2+</div><div class="label">года на рынке</div></div>
                     <div class="stat-item"><div class="number">100%</div><div class="label">гарантия</div></div>
                 </div>
@@ -738,6 +584,7 @@
         </div>
     </section>
 
+    <!-- ===== УСЛУГИ ===== -->
     <section class="services" id="services">
         <div class="container">
             <div class="fade-in">
@@ -755,6 +602,7 @@
         </div>
     </section>
 
+    <!-- ===== ПРЕИМУЩЕСТВА ===== -->
     <section class="advantages">
         <div class="container">
             <div class="fade-in">
@@ -763,13 +611,18 @@
             </div>
             <div class="grid-4">
                 <div class="adv-item glass-card scale-in delay-1"><i class="fas fa-file-signature icon"></i><h4>Лицензия МЧС</h4><p>Работаем официально, все документы в порядке.</p></div>
-                <div class="adv-item glass-card scale-in delay-2"><i class="fas fa-hard-hat icon"></i><h4>Свои бригады</h4><p>Не привлекаем субподрядчиков.</p></div>
+                <div class="adv-item glass-card scale-in delay-2" data-tooltip="В штате — только опытные мастера с опытом работы от 10 лет. Каждый специалист имеет допуск к электромонтажным работам и регулярно проходит аттестацию. Мы лично отвечаем за результат на каждом этапе. Все работы выполняются аккуратно, с соблюдением норм и без постоянного контроля с вашей стороны.">
+                    <i class="fas fa-hard-hat icon"></i>
+                    <h4>Свои бригады</h4>
+                    <p>Только штатные специалисты с опытом от 10 лет. Лично отвечаем за результат.</p>
+                </div>
                 <div class="adv-item glass-card scale-in delay-3"><i class="fas fa-tachometer-alt icon"></i><h4>Скорость</h4><p>Выезд в день заявки по Томску.</p></div>
                 <div class="adv-item glass-card scale-in delay-4"><i class="fas fa-medal icon"></i><h4>Гарантия</h4><p>На все виды работ — 100%.</p></div>
             </div>
         </div>
     </section>
 
+    <!-- ===== ЭТАПЫ ===== -->
     <section class="steps">
         <div class="container">
             <div class="fade-in">
@@ -785,6 +638,7 @@
         </div>
     </section>
 
+    <!-- ===== ОБЪЕКТЫ ===== -->
     <section class="gallery" id="objects">
         <div class="container">
             <div class="fade-in">
@@ -802,6 +656,7 @@
         </div>
     </section>
 
+    <!-- ===== КАРТА ===== -->
     <section style="padding: 30px 0;">
         <div class="container">
             <div class="fade-in">
@@ -814,6 +669,7 @@
         </div>
     </section>
 
+    <!-- ===== КОНТАКТЫ ===== -->
     <section class="contact" id="contact">
         <div class="container">
             <div class="fade-in">
@@ -836,47 +692,4 @@
                         <input type="hidden" name="_next" value="https://fireballsec.github.io/fireballsec/thanks.html">
                         <div style="margin: 12px 0;">
                             <label style="display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.7); cursor: pointer; line-height: 1.4;">
-                                <input type="checkbox" name="agree" required style="width: 16px; height: 16px; margin-top: 2px; cursor: pointer; accent-color: #FF6B35; flex-shrink: 0;">
-                                <span>Я принимаю условия <a href="privacy.html" target="_blank" style="color: #FF6B35; text-decoration: none; border-bottom: 1px dashed #FF6B35;">Политики конфиденциальности</a> и даю согласие на обработку моих персональных данных</span>
-                            </label>
-                        </div>
-                        <button type="submit">Отправить заявку</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>© 2026 ФАЙЕРБОЛ СЕКЬЮРИТИ</p>
-            <div class="footer-links">
-                <a href="privacy.html">Политика конфиденциальности</a>
-                <a href="#">Согласие на обработку данных</a>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const elements = document.querySelectorAll('.fade-in, .scale-in');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
-            elements.forEach(el => observer.observe(el));
-            setTimeout(() => {
-                elements.forEach(el => {
-                    if (el.getBoundingClientRect().top < window.innerHeight) {
-                        el.classList.add('visible');
-                    }
-                });
-            }, 200);
-        });
-    </script>
-
-</body>
-</html>
+                                <input type="checkbox" name="agree" required style="width: 16px; height: 16px; margin-top: 2px; cursor: pointer; accent-color: #FF6B35;
