@@ -494,51 +494,55 @@
             margin-top: 8px;
         }
 
-       /* ===== МОБИЛЬНАЯ ВЕРСИЯ (ЛОГОТИП СЛЕВА) ===== */
+     /* ===== МОБИЛЬНАЯ ВЕРСИЯ (ЛОГОТИП В СТРОКЕ С МЕНЮ) ===== */
 @media (max-width: 768px) {
     .header-inner {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
         align-items: center;
+        justify-content: space-between;
+        gap: 6px;
     }
 
     .logo-img {
-        height: 50px !important;
+        height: 80px !important; /* Увеличенный логотип */
         width: auto;
-        order: 1; /* логотип первым */
+        flex-shrink: 0;
+        order: 1;
     }
 
     nav {
-        order: 2; /* меню вторым */
-        flex-basis: 100%;
-        justify-content: center;
+        order: 2;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
         gap: 12px;
-        font-size: 13px;
-        margin-top: 6px;
+        font-size: 14px;
+        flex: 1;
     }
 
     .header-right {
-        order: 3; /* телефон и кнопки третьими */
+        order: 3;
         display: flex;
         gap: 6px;
         flex-wrap: wrap;
         justify-content: flex-end;
-        align-items: center;
+        flex-basis: 100%;
+        margin-top: 4px;
     }
 
     .header-right a.phone-link span {
-        font-size: 13px;
+        font-size: 14px;
     }
 
     .btn-primary {
-        padding: 5px 12px;
-        font-size: 11px;
+        padding: 6px 14px;
+        font-size: 12px;
     }
 
     .btn-emergency {
-        padding: 5px 12px;
-        font-size: 11px;
+        padding: 6px 14px;
+        font-size: 12px;
         animation: none;
     }
 }
