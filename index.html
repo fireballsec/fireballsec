@@ -329,8 +329,6 @@
         .adv-item {
             text-align: center;
             padding: 24px 16px;
-            position: relative;
-            cursor: help;
         }
         .adv-item .icon {
             font-size: 36px;
@@ -345,44 +343,6 @@
         .adv-item p {
             color: rgba(255, 255, 255, 0.5);
             font-size: 14px;
-        }
-
-        /* ===== ВСПЛЫВАЮЩАЯ ПОДСКАЗКА ===== */
-        .adv-item[data-tooltip]:hover::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: 110%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #1A1A1A;
-            color: #fff;
-            padding: 12px 16px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 107, 53, 0.25);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-            font-size: 13px;
-            line-height: 1.4;
-            width: 280px;
-            max-width: 90vw;
-            text-align: left;
-            z-index: 999;
-            pointer-events: none;
-            white-space: normal;
-            font-weight: 400;
-            backdrop-filter: blur(8px);
-            background: rgba(10, 10, 10, 0.95);
-        }
-
-        .adv-item[data-tooltip]:hover::before {
-            content: '';
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            border: 6px solid transparent;
-            border-top-color: #1A1A1A;
-            z-index: 999;
-            pointer-events: none;
         }
 
         /* ===== ЭТАПЫ ===== */
@@ -671,13 +631,6 @@
                 font-size: 13px;
             }
 
-            .adv-item[data-tooltip]:hover::after {
-                width: 220px;
-                font-size: 12px;
-                padding: 10px 14px;
-                bottom: 105%;
-            }
-
             .contact-form label {
                 flex-wrap: wrap;
                 gap: 4px;
@@ -737,17 +690,11 @@
             .section-title {
                 font-size: 22px;
             }
-            .adv-item[data-tooltip]:hover::after {
-                width: 200px;
-                font-size: 11px;
-                padding: 8px 12px;
-            }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== ШАПКА ===== -->
     <header>
         <div class="container header-inner">
             <a href="#services" style="display: block; line-height: 0;">
@@ -769,7 +716,6 @@
         </div>
     </header>
 
-    <!-- ===== ГЕРОЙ ===== -->
     <section class="hero">
         <div class="container">
             <div class="hero-grid">
@@ -784,7 +730,7 @@
                     </div>
                 </div>
                 <div class="hero-stats fade-in delay-2">
-                    <div class="stat-item"><div class="number">100+</div><div class="label">объектов</div></div>
+                    <div class="stat-item"><div class="number">50+</div><div class="label">объектов</div></div>
                     <div class="stat-item"><div class="number">2+</div><div class="label">года на рынке</div></div>
                     <div class="stat-item"><div class="number">100%</div><div class="label">гарантия</div></div>
                 </div>
@@ -792,7 +738,6 @@
         </div>
     </section>
 
-    <!-- ===== УСЛУГИ ===== -->
     <section class="services" id="services">
         <div class="container">
             <div class="fade-in">
@@ -810,7 +755,6 @@
         </div>
     </section>
 
-    <!-- ===== ПРЕИМУЩЕСТВА ===== -->
     <section class="advantages">
         <div class="container">
             <div class="fade-in">
@@ -819,18 +763,13 @@
             </div>
             <div class="grid-4">
                 <div class="adv-item glass-card scale-in delay-1"><i class="fas fa-file-signature icon"></i><h4>Лицензия МЧС</h4><p>Работаем официально, все документы в порядке.</p></div>
-                <div class="adv-item glass-card scale-in delay-2" data-tooltip="В штате — только опытные мастера с опытом работы от 10 лет. Каждый специалист имеет допуск к электромонтажным работам и регулярно проходит аттестацию. Мы лично отвечаем за результат на каждом этапе. Все работы выполняются аккуратно, с соблюдением норм и без постоянного контроля с вашей стороны.">
-                    <i class="fas fa-hard-hat icon"></i>
-                    <h4>Свои бригады</h4>
-                    <p>Только штатные специалисты с опытом от 10 лет. Лично отвечаем за результат.</p>
-                </div>
+                <div class="adv-item glass-card scale-in delay-2"><i class="fas fa-hard-hat icon"></i><h4>Свои бригады</h4><p>Не привлекаем субподрядчиков.</p></div>
                 <div class="adv-item glass-card scale-in delay-3"><i class="fas fa-tachometer-alt icon"></i><h4>Скорость</h4><p>Выезд в день заявки по Томску.</p></div>
                 <div class="adv-item glass-card scale-in delay-4"><i class="fas fa-medal icon"></i><h4>Гарантия</h4><p>На все виды работ — 100%.</p></div>
             </div>
         </div>
     </section>
 
-    <!-- ===== ЭТАПЫ ===== -->
     <section class="steps">
         <div class="container">
             <div class="fade-in">
@@ -846,7 +785,6 @@
         </div>
     </section>
 
-    <!-- ===== ОБЪЕКТЫ ===== -->
     <section class="gallery" id="objects">
         <div class="container">
             <div class="fade-in">
@@ -864,7 +802,6 @@
         </div>
     </section>
 
-    <!-- ===== КАРТА ===== -->
     <section style="padding: 30px 0;">
         <div class="container">
             <div class="fade-in">
@@ -877,7 +814,6 @@
         </div>
     </section>
 
-    <!-- ===== КОНТАКТЫ ===== -->
     <section class="contact" id="contact">
         <div class="container">
             <div class="fade-in">
@@ -888,4 +824,59 @@
                 <div class="contact-info">
                     <p><span class="label"><i class="fas fa-phone-alt" style="margin-right:6px; color:#FF6B35;"></i> Телефон</span><br><span class="value">8 (913) 100-47-18</span></p>
                     <p><span class="label"><i class="fas fa-map-marker-alt" style="margin-right:6px; color:#FF6B35;"></i> Адрес</span><br><span class="value">г. Томск, ул. Савиных, 3, помещение 15, 2-й этаж</span></p>
-                    <p><span class="label"><i class="fas fa-clock" style="margin-right:6px; color:#FF6B35;"></i> График работы</span><br><span class="value">Пн–Пт, 09:00–18:00</
+                    <p><span class="label"><i class="fas fa-clock" style="margin-right:6px; color:#FF6B35;"></i> График работы</span><br><span class="value">Пн–Пт, 09:00–18:00</span></p>
+                    <p style="margin-top:20px; color:rgba(255,255,255,0.3); font-size:13px;">Работаем с юридическими и физическими лицами</p>
+                </div>
+                <div class="contact-form">
+                    <form action="https://formsubmit.co/fayerbol.sekyuriti@mail.ru" method="POST">
+                        <input type="text" name="Имя" placeholder="Ваше имя" required>
+                        <input type="tel" name="Телефон" placeholder="Телефон" required>
+                        <textarea name="Сообщение" rows="3" placeholder="Сообщение"></textarea>
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="https://fireballsec.github.io/fireballsec/thanks.html">
+                        <div style="margin: 12px 0;">
+                            <label style="display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.7); cursor: pointer; line-height: 1.4;">
+                                <input type="checkbox" name="agree" required style="width: 16px; height: 16px; margin-top: 2px; cursor: pointer; accent-color: #FF6B35; flex-shrink: 0;">
+                                <span>Я принимаю условия <a href="privacy.html" target="_blank" style="color: #FF6B35; text-decoration: none; border-bottom: 1px dashed #FF6B35;">Политики конфиденциальности</a> и даю согласие на обработку моих персональных данных</span>
+                            </label>
+                        </div>
+                        <button type="submit">Отправить заявку</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 ФАЙЕРБОЛ СЕКЬЮРИТИ</p>
+            <div class="footer-links">
+                <a href="privacy.html">Политика конфиденциальности</a>
+                <a href="#">Согласие на обработку данных</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.fade-in, .scale-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
+            elements.forEach(el => observer.observe(el));
+            setTimeout(() => {
+                elements.forEach(el => {
+                    if (el.getBoundingClientRect().top < window.innerHeight) {
+                        el.classList.add('visible');
+                    }
+                });
+            }, 200);
+        });
+    </script>
+
+</body>
+</html>
