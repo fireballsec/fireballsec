@@ -494,50 +494,54 @@
             margin-top: 8px;
         }
 
-        /* ===== МОБИЛЬНАЯ ВЕРСИЯ ===== */
-        @media (max-width: 768px) {
-            .header-inner {
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: space-between;
-                align-items: center;
-                gap: 8px;
-            }
-            
-            .logo-img {
-                height: 60px !important;
-                max-width: 120px;
-            }
-            
-            nav {
-                order: 3;
-                flex-basis: 100%;
-                justify-content: center;
-                gap: 12px;
-                font-size: 13px;
-            }
-            
-            .header-right {
-                gap: 8px;
-                flex-wrap: wrap;
-                justify-content: flex-end;
-            }
-            
-            .header-right a.phone-link span {
-                font-size: 14px;
-            }
-            
-            .btn-primary {
-                padding: 6px 14px;
-                font-size: 12px;
-            }
-            
-            .btn-emergency {
-                padding: 6px 14px;
-                font-size: 12px;
-                animation: none;
-            }
-            
+       /* ===== МОБИЛЬНАЯ ВЕРСИЯ (ЛОГОТИП СЛЕВА) ===== */
+@media (max-width: 768px) {
+    .header-inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo-img {
+        height: 50px !important;
+        width: auto;
+        order: 1; /* логотип первым */
+    }
+
+    nav {
+        order: 2; /* меню вторым */
+        flex-basis: 100%;
+        justify-content: center;
+        gap: 12px;
+        font-size: 13px;
+        margin-top: 6px;
+    }
+
+    .header-right {
+        order: 3; /* телефон и кнопки третьими */
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .header-right a.phone-link span {
+        font-size: 13px;
+    }
+
+    .btn-primary {
+        padding: 5px 12px;
+        font-size: 11px;
+    }
+
+    .btn-emergency {
+        padding: 5px 12px;
+        font-size: 11px;
+        animation: none;
+    }
+}
             .hero h1 {
                 font-size: 28px;
             }
